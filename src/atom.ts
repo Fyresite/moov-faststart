@@ -23,7 +23,7 @@ export const MAX_FTYP_ATOM_SIZE = BigInt(1048576)
 
 export interface QtAtom {
     kind: string
-    size: BigInt
+    size: bigint
     data: QtAtom[] | Buffer
 }
 
@@ -39,8 +39,8 @@ export function parseAtoms(infile: Buffer, depth = 0): QtAtom[] {
             break
         }
 
-        let fwd: BigInt // forward-seek counter
-        let atomSize = BigInt(readU32(cur, infile))
+        let fwd: bigint // forward-seek counter
+        let atomSize: bigint = BigInt(readU32(cur, infile))
         const atomType = readU32(cur, infile)
         if (Number(atomSize) === 1) {
             // 64-bit atom size

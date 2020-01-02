@@ -1,5 +1,5 @@
 export interface Cursor {
-    pos: BigInt
+    pos: bigint
 }
 
 export function numToHex(val: number) {
@@ -22,7 +22,7 @@ export function readU32(cur: Cursor, buf: Buffer) {
     return u32
 }
 
-export function readU64(cur: Cursor, buf: Buffer): BigInt {
+export function readU64(cur: Cursor, buf: Buffer): bigint {
     const long = buf.slice(Number(cur.pos), Number(cur.pos + BigInt(8)))
     const u64 = (BigInt(long.readUInt32BE(0)) << BigInt(32)) | (BigInt(long.readUInt32BE(4)) & BigInt(0xffffffff))
     cur.pos += BigInt(8)
