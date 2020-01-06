@@ -67,10 +67,10 @@ function updateChunkAtom(atom: QtAtom, totalOffset: number, options: FaststartOp
         const cur = 8 + i * entrySize // 8 byte header
         if (isCo64(atom.kind)) {
             const newVal64 =
-                Number((BigInt(atom.data.readUInt32BE(cur)) << 32) | BigInt(atom.data.readUInt32BE(cur + 4))) +
+                Number((BigInt(atom.data.readUInt32BE(cur)) << BigInt(32)) | BigInt(atom.data.readUInt32BE(cur + 4))) +
                 totalOffset
-            newData.writeUInt32BE((BigInt(newVal64) >> BigInt(32)) & BigInt(0xffffffff), cur)
-            newData.writeUInt32BE(BigInt(newVal64) & BigInt(0xffffffff), cur + 4)
+            newData.writeUInt32BE(Number((BigInt(newVal64) >> BigInt(32)) & BigInt(0xffffffff)), cur)
+            newData.writeUInt32BE(Number(BigInt(newVal64) & BigInt(0xffffffff)), cur + 4)
             continue
         }
 
