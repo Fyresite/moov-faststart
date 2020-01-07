@@ -16,8 +16,7 @@
     "noUnusedLocals": true,
     "esModuleInterop": true,
     "typeRoots": [
-      "node_modules/@types",
-      "src/types"
+      "node_modules/@types"
     ]
   },
   "exclude": [
@@ -28,6 +27,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "test"
+    "test",
+    "lib",
   ]
 }

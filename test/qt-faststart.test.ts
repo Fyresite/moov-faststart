@@ -2,9 +2,9 @@
 
 import * as fs from 'fs'
 import * as path from 'path'
-import faststart, { sortFaststartAtoms, faststart_remote_file, AtomDef } from '../src/qt-faststart'
-import { QtAtom, parseAtoms, traverseAtoms } from '../src/atom'
-import { RemoteFile } from '../src/remote-file'
+import faststart, { sortFaststartAtoms, faststart_remote_file, AtomDef } from '../lib/qt-faststart'
+import { QtAtom, parseAtoms, traverseAtoms } from '../lib/atom'
+import { RemoteFile } from '../lib/remote-file'
 import streamBuffers from 'stream-buffers';
 describe('qt-faststart', () => {
     const infile = fs.readFileSync(path.resolve(__dirname, 'h264/bbb_baseline.mp4'))
@@ -59,7 +59,6 @@ describe('qt-faststart', () => {
         ]
         await faststart_remote_file(file, defs, fs.createWriteStream('/tmp/test.mp4'))
         const faststarted = fs.readFileSync('/tmp/test.mp4')
-        fs.unlinkSync('/tmp/test.mp4')
         const snapshot = fs.readFileSync(path.resolve(__dirname, 'h264/bbb_faststarted.snapshot.mp4'))
         const cmp = Buffer.compare(faststarted, snapshot)
         expect(cmp).toBe(0)
