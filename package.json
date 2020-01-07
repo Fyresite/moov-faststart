@@ -1,6 +1,6 @@
 {
   "name": "@fyreware/moov-faststart",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Re-orders moov atoms in mp4 containers to enable streaming",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
