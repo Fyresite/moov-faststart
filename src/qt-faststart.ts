@@ -38,7 +38,7 @@ export interface AtomDef {
     type: string
 }
 
-export async function faststart_remote_file(input: RemoteFile, ranges: Array<AtomDef>, output: Writable, options: FaststartOptions = {}) {
+export async function faststartRemoteFile(input: RemoteFile, ranges: Array<AtomDef>, output: Writable, options: FaststartOptions = {}) {
     // const size = await input.size();
 
     const [ftypDef, moovDef, ...rest] = ranges;
