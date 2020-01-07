@@ -11,7 +11,7 @@
     "prebuild": "npm run clean",
     "build": "tsc --declaration",
     "pretest": "npm run build",
-    "test": "yarn mocha ./test --timeout=10000",
+    "test": "jest",
     "prepack": "npm run build"
   },
   "author": "Kevin Tjiam <kevin@kevincharm.com>",
@@ -26,13 +26,14 @@
     "moov"
   ],
   "devDependencies": {
-    "@types/chai": "^4.1.4",
-    "@types/mocha": "^5.2.5",
-    "@types/node": "^10.5.2",
-    "@types/tape": "^4.2.31",
-    "chai": "^4.1.2",
-    "mocha": "^5.2.0",
-    "tape": "^4.9.0",
+    "@types/jest": "^24.0.25",
+    "@types/node": "^10.17.13",
+    "jest": "^24.9.0",
+    "stream-buffers": "^3.0.2",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "@types/stream-buffers": "^3.0.3"
   }
 }
