@@ -43,6 +43,10 @@ export async function faststartRemoteFile(input: RemoteFile, ranges: Array<AtomD
 
     const [ftypDef, moovDef, ...rest] = ranges;
 
+    if (ftypDef.size === moovDef.start) {
+        throw new Error('AlreadyFastStarted')
+    }
+
     let ftyp: Buffer | null = await input.read(ftypDef.size, ftypDef.start) as Buffer
 
     await writeData(output, ftyp as Buffer);
