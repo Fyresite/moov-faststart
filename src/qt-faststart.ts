@@ -41,7 +41,26 @@ export interface AtomDef {
 export async function faststartRemoteFile(input: RemoteFile, ranges: Array<AtomDef>, output: Writable, options: FaststartOptions = {}) {
     // const size = await input.size();
 
-    const [ftypDef, moovDef, ...rest] = ranges;
+    let ftypDef: AtomDef | undefined;
+    let moovDef: AtomDef | undefined;
+    const rest: Array<AtomDef> = [];
+
+    ranges.forEach(range => {
+        if (range.type === 'ftyp') {
+            ftypDef = range;
+        } else if (range.type === 'moov') {
+            moovDef = range;
+        } else {
+            rest.push(range)
+        }
+    })
+
+    if (!ftypDef) {
+        throw (new Error('No ftype'))
+    }
+    if (!moovDef) {
+        throw (new Error('No moov'))
+    }
 
     if (ftypDef.size === moovDef.start) {
         throw new Error('AlreadyFastStarted')
